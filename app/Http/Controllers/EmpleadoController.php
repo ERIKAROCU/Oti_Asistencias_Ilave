@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empleado;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreEmpleadoRequest;
 
 class EmpleadoController extends Controller
 {
@@ -20,17 +21,10 @@ class EmpleadoController extends Controller
         return view('empleados.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreEmpleadoRequest $request)
     {
-        // Validar y guardar un nuevo empleado
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'apellido' => 'required|string|max:255',
-            'dni' => 'required|unique:empleados,dni',
-            'cargo' => 'required|string|max:255',
-        ]);
-
-        Empleado::create($request->all());
+        // No es necesario volver a validar porque StoreEmpleadoRequest ya lo hace
+        Empleado::create($request->validated()); // Utiliza validated() para obtener los datos validados
         return redirect()->route('empleados.index')->with('success', 'Empleado creado correctamente');
     }
 

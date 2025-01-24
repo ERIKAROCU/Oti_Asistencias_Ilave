@@ -30,7 +30,7 @@
 
                         <div class="mb-4">
                             <label for="dni" class="block text-sm font-medium text-gray-700">DNI</label>
-                            <input type="text" id="dni" name="dni" class="mt-1 block w-full" value="{{ old('dni') }}" required>
+                            <input type="number" id="dni" name="dni" class="mt-1 block w-full" value="{{ old('dni') }}" required>
                             @error('dni')
                                 <div class="text-red-600 text-sm">{{ $message }}</div>
                             @enderror

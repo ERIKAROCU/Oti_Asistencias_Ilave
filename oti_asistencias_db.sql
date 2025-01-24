@@ -3,8 +3,11 @@ CREATE DATABASE oti_asistencias;
 USE oti_asistencias;
 
 select*from asistencias;
+-- drop table asistencias;
 select*from users;
 select*from empleados;
+
+describe empleados;
 
 update users set role = "admin" where id = 1;
 

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('asistencias', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('empleado_id')->constrained()->onDelete('cascade'); // Relación con empleados
+            $table->timestamp('entrada')->nullable();
+            $table->timestamp('salida')->nullable();
             $table->timestamps();
         });
     }
